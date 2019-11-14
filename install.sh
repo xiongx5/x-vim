@@ -16,3 +16,13 @@ else
     nvim -u $HOME/.vimrc.bundles +PlugInstall! +PlugClean! +qall
 fi
 export SHELL=$system_shell
+
+cd ~/.vim/plugged/YouCompleteMe
+if [ `which clang` ]   # check system clang
+then
+    python install.py --clang-completer --system-libclang   # use system clang
+else
+    python install.py --clang-completer
+fi
+
+echo "Install Done!"
