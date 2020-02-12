@@ -1,0 +1,53 @@
+#module
+snippet moduleg
+module ${1:ModuleName} (
+    input clk,
+    input rst,
+
+);
+
+endmodule
+endsnippet
+
+#parameter
+snippet forg
+generate
+    genvar $1;
+    for ($1 = 0; $1 < $2; $1 = $1 + 1)
+    begin:${3://name}
+    
+    end
+endgenerate
+endsnippet
+
+
+snippet keeptrue
+(* KEEP = "TRUE" *)
+endsnippet
+
+snippet alwaysc
+always @(*) begin 
+    $1 
+end
+endsnippet
+
+snippet alwaysf
+always @(posedge clk) begin
+    if (rst) begin 
+
+    end else begin 
+
+    end
+end
+endsnippet
+
+snippet ifg
+if ($1) begin 
+
+else begin 
+
+end
+endsnippet
+
+
+

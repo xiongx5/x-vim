@@ -5,6 +5,8 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 cp .vimrc ~
 
 cp -r colors ~/.vim/
+cp -r UltiSnips ~/.vim/
+
 
 
 echo "Step3: update/install plugins using Vim-plug"
@@ -20,9 +22,9 @@ export SHELL=$system_shell
 cd ~/.vim/plugged/YouCompleteMe
 if [ `which clang` ]   # check system clang
 then
-    python install.py --clang-completer --system-libclang   # use system clang
+    python3 install.py --clang-completer --system-libclang   # use system clang
 else
-    python install.py --clang-completer
+    python3 install.py --clang-completer
 fi
 
 echo "Install Done!"
