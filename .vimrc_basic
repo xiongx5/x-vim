@@ -2,4 +2,5 @@
 inoremap jk <esc>
 let mapleader = ','
 nnoremap <leader>x :source ~/.vimrc_xx<cr>
+so ~/.vimrc_xx
 

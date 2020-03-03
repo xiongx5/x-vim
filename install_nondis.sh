@@ -1,0 +1,32 @@
+
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+#cp .vimrc ~
+
+cp .vimrc_basic ~/.vimrc 
+cp .vimrc ~/.vimrx_xx
+cp -r colors ~/.vim/
+cp -r UltiSnips ~/.vim/
+
+
+
+echo "Step3: update/install plugins using Vim-plug"
+system_shell=$SHELL
+export SHELL="/bin/sh"
+if $FOR_VIM; then
+    vim so ~/.vimrc_xx +PlugInstall! +PlugClean! +qall
+else
+    nvim -u $HOME/.vimrc.bundles +PlugInstall! +PlugClean! +qall
+fi
+export SHELL=$system_shell
+
+cd ~/.vim/plugged/YouCompleteMe
+if [ `which clang` ]   # check system clang
+then
+    python3 install.py --clang-completer --system-libclang   # use system clang
+else
+    python3 install.py --clang-completer
+fi
+
+echo "Install Done!"

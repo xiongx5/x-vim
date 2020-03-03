@@ -12,8 +12,7 @@ cd vim
             --enable-luainterp=yes \
             --enable-gui=gtk2 \
             --enable-cscope \
-            --prefix=/$HOME/.local
+            --prefix=/usr/local
 
 make 
 make install
-echo "alias vimx=$HOME/.local/bin/vim" >> ~/.bashrc
