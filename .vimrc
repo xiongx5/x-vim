@@ -12,6 +12,7 @@ syntax enable
 "set backspace=indent,eol,start                                          "Make backspace behave like every other editor.
 let mapleader = ',' 						    	"The default is \, but a comma is much better.
 set number								"Let's activate line numbers.
+set rnu                                                                " Use relative number
 set noerrorbells visualbell t_vb=               			"No damn bells!
 "set autowriteall                                                        "Automatically write the file when switching buffers.
 set complete=.,w,b,u 							"Set our desired autocompletion matching.
@@ -141,7 +142,6 @@ autocmd TabLeave * let g:last_active_tab = tabpagenr()
 
 
 "-------------Mappings--------------"
-"nmap <Leader>es :e ~/.vim/snippets/
 
 "Add simple highlight removal.
 nmap <Leader><space> :nohlsearch<cr>
@@ -189,6 +189,9 @@ map <Esc>[24~ <F12>
 
 noremap <F8> :TagbarToggle<CR>
 noremap <F2> :NERDTreeToggle<CR>
+noremap <F3> :set nu!<CR>
+noremap <F4> :SignatureToggleSigns<CR>
+
 set pastetoggle=<F6> 
 
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
@@ -234,7 +237,7 @@ call plug#begin()
     Plug 'scrooloose/nerdcommenter'
     Plug 'majutsushi/tagbar'
     Plug 'tmhedberg/matchit'
-    Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+    "Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
     Plug 'junegunn/vim-easy-align'
     
     Plug 'tpope/vim-vinegar'
@@ -247,9 +250,29 @@ call plug#begin()
     Plug 'rking/ag.vim'
     Plug 'Raimondi/delimitMate'
     Plug 'easymotion/vim-easymotion'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'SirVer/ultisnips'
+    Plug 'terryma/vim-multiple-cursors'
+    Plug 'SirVer/ultisnips'
+    Plug 'honza/vim-snippets'
+    Plug 'kshenoy/vim-signature'
+
+    "Plug 'godlygeek/tabular'
+    "Plug 'plasticboy/vim-markdown'
+    Plug 'iamcco/mathjax-support-for-mkdp' " allow to preview math equation"
+    Plug 'iamcco/markdown-preview.vim'
 call plug#end()
+
+"power-line
+let g:Powerline_symbols = 'fancy'
+"easymotion
+let g:EasyMotion_smartcase = 1
+map <Leader><leader>h <Plug>(easymotion-linebackward)
+map <Leader><Leader>j <Plug>(easymotion-j)
+map <Leader><Leader>k <Plug>(easymotion-k)
+map <Leader><leader>l <Plug>(easymotion-lineforward)
+map <Leader><leader>. <Plug>(easymotion-repeat)
+
+"markdown 
+noremap <Leader>md :MarkdownPreview<CR>
 
 
 
@@ -354,7 +377,7 @@ elseif &filetype == 'java'
 elseif &filetype == 'sh'
         :!time bash %
 elseif &filetype == 'python'
-        exec "!time python %"
+        exec "!time python3 %"
 elseif &filetype == 'html'
         exec "!firefox % &"
 elseif &filetype == 'go'
@@ -385,10 +408,14 @@ endfunc
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"let g:UltiSnipsEdit="<Leader>es"
+nnoremap <Leader>es :UltiSnipsEdit<cr>
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips','~/.vim/plugged/vim-snippets/UltiSnips']
+
+
 "map <leader>vga :call Vhdl_GA_All()<CR>
 
 "" Alignment
@@ -399,6 +426,6 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
    "exe ":'<,'> EasyAlign )"
 "endfunction
 let @e='0f,d$Bd0yiwi.jkA (jkpA,jk'
-let @i='0f;r,0f]eyiwea_injk/input_assignO€kb€kbassign 0 = 0_in;jk"'
+let @i='0f;r,0f]eyiwea_injk/input_assignO?kb?kbassign 0 = 0_in;jk"'
 nnoremap <leader>tg :!/usr/local/bin/ctags --extras=+q --fields=+i -n -R<cr>
 nnoremap <Space> @q

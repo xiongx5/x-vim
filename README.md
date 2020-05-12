@@ -55,3 +55,22 @@ sh -x install.sh
 ```
 cd ~ && rm -rf .vim .vimrc .vimrc.bundles && cd -
 ```
+## How to use
+
+### Buffers:
+```
+:bn buffer next
+:bp buffer previous
+:bd buffer close 
+```
+
+### Snippets 
+```
+    Plug 'SirVer/ultisnips'
+    Plug 'honza/vim-snippets'
+```
+Using ultisnips together with vim-snippets. YouCompleteMe as auto completion. 
+You have two places to store snippets. One is from vim-snippets, the other one is from ~/.vim/UltiSnips. Store all your personal snippers by the later one.
+```
+,e to edit the related personal snippets file. 
+```
