@@ -69,8 +69,8 @@ cd ~ && rm -rf .vim .vimrc .vimrc.bundles && cd -
     Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
 ```
-Using ultisnips together with vim-snippets. YouCompleteMe as auto completion. 
+Using ultisnips together with vim-snippets and YouCompleteMe as auto completion. 
 You have two places to store snippets. One is from vim-snippets, the other one is from ~/.vim/UltiSnips. Store all your personal snippers by the later one.
 ```
-,e to edit the related personal snippets file. 
+,es to edit the related personal snippets file. 
 ```
