@@ -159,18 +159,23 @@ vmap <Leader>su ! awk '{ print length(), $0 \| "sort -n \| cut -d\\  -f2-" }'<cr
 
 " maping
 "
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
+"noremap <Up> <Nop>
+"noremap <Down> <Nop>
+"noremap <Left> <Nop>
+"noremap <Right> <Nop>
 
 inoremap jk <esc>
 
 
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
 
+" locate to last edit line when opened 
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
 
-
+" Search for visually selected text 
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 "-------------Fix F keys maping problem--------------"
 map <Esc>OP <F1>
@@ -237,7 +242,7 @@ call plug#begin()
     Plug 'scrooloose/nerdcommenter'
     Plug 'majutsushi/tagbar'
     Plug 'tmhedberg/matchit'
-    "Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+
     Plug 'junegunn/vim-easy-align'
     
     Plug 'tpope/vim-vinegar'
@@ -254,11 +259,12 @@ call plug#begin()
     Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
     Plug 'kshenoy/vim-signature'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-repeat'
 
-    "Plug 'godlygeek/tabular'
-    "Plug 'plasticboy/vim-markdown'
     Plug 'iamcco/mathjax-support-for-mkdp' " allow to preview math equation"
     Plug 'iamcco/markdown-preview.vim'
+    Plug 'terryma/vim-expand-region'
 call plug#end()
 
 "power-line
@@ -273,8 +279,12 @@ map <Leader><leader>. <Plug>(easymotion-repeat)
 
 "markdown 
 noremap <Leader>md :MarkdownPreview<CR>
+noremap <Leader>ms :MarkdownPreviewStop<CR>
+let g:mkdp_path_to_chrome = "google-chrome"
 
-
+"expand region
+vmap K <Plug>(expand_region_expand)
+vmap J <Plug>(expand_region_shrink)
 
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 
@@ -413,18 +423,10 @@ nnoremap <Leader>es :UltiSnipsEdit<cr>
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips','~/.vim/plugged/vim-snippets/UltiSnips']
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips',$HOME.'/.vim/plugged/vim-snippets/UltiSnips']
 
 
-"map <leader>vga :call Vhdl_GA_All()<CR>
 
-"" Alignment
-"function! Vhdl_GA_All()
-   "exe "normal! \e"
-   "exe ":'<,'> EasyAlign *<space>"
-   "exe ":'<,'> EasyAlign ("
-   "exe ":'<,'> EasyAlign )"
-"endfunction
 let @e='0f,d$Bd0yiwi.jkA (jkpA,jk'
 let @i='0f;r,0f]eyiwea_injk/input_assignO?kb?kbassign 0 = 0_in;jk"'
 nnoremap <leader>tg :!/usr/local/bin/ctags --extras=+q --fields=+i -n -R<cr>
