@@ -194,7 +194,7 @@ map <Esc>[24~ <F12>
 
 noremap <F8> :TagbarToggle<CR>
 noremap <F2> :NERDTreeToggle<CR>
-noremap <F3> :set nu!<CR>
+noremap <F3> :set nu!<CR> :set rnu!<CR>
 noremap <F4> :SignatureToggleSigns<CR>
 
 set pastetoggle=<F6> 
@@ -237,7 +237,7 @@ let g:grep_cmd_opts = '--line-numbers --noheading'
 
 
 call plug#begin()
-    Plug 'vhda/verilog_systemverilog.vim'
+    "Plug 'vhda/verilog_systemverilog.vim'
     Plug 'scrooloose/nerdtree'
     Plug 'scrooloose/nerdcommenter'
     Plug 'majutsushi/tagbar'

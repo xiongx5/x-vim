@@ -1,0 +1,52 @@
+snippet forg "Used to generate for" <options>
+
+generate
+    genvar $1;
+    for ($1 = 0; $1 < $2; $1 = $1 + 1)
+    begin: your_name //name
+
+    end
+endgenerate
+
+
+endsnippet
+
+snippet always "always_posedge" <options>
+
+always @(posedge clk) begin
+    if (rst) begin
+	
+    end	begin
+
+    end
+end
+endsnippet
+
+snippet begin "begin_end" <options>
+begin
+    $1
+end else bigin
+    
+end
+
+endsnippet
+
+snippet if  "if_else" <options>
+if ($1) begin
+    
+end else begin
+    
+end
+
+endsnippet
+
+snippet ifdef "ifdef " <options>
+
+\`ifdef $1
+    
+\`else
+    
+\`endif
+
+
+endsnippet

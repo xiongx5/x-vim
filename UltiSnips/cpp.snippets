@@ -16,3 +16,26 @@ int main() {
 }
 
 endsnippet
+
+snippet loopmap "loop in a map" <options>
+map<string, int>::iterator it;
+for ( it = $1.begin(); it != $1.end(); it++ ){
+    std::cout << it->first  // string (key)
+              << ':'
+              << it->second   // string's value 
+              << std::endl ;
+}
+
+endsnippet
+snippet usename "usenamespace description" <options>
+using namespace std;
+endsnippet
+snippet stoc "string to char const description" <options>
+string $1_string = ;
+const char* $1 = $1_string.c_str();
+
+endsnippet
+
+snippet iffind "if find in a mpa description" <options>
+if($1.find($2) == $1.end()) continue;
+endsnippet
