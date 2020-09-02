@@ -22,8 +22,12 @@ set softtabstop=4
 set shiftwidth=4
 set noswapfile
 
-set clipboard=unnamedplus
-
+"set clipboard=unnamedplus
+if system('uname -s') == "Darwin\n"
+  set clipboard=unnamed "OSX
+else
+  set clipboard=unnamedplus "Linux
+endif
 
 filetype on
 filetype plugin indent on
