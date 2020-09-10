@@ -269,6 +269,9 @@ call plug#begin()
     Plug 'iamcco/mathjax-support-for-mkdp' " allow to preview math equation"
     Plug 'iamcco/markdown-preview.vim'
     Plug 'terryma/vim-expand-region'
+    Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+
+
 call plug#end()
 
 "power-line
