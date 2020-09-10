@@ -22,11 +22,13 @@ set softtabstop=4
 set shiftwidth=4
 set noswapfile
 
-"set clipboard=unnamedplus
+" System  related
 if system('uname -s') == "Darwin\n"
   set clipboard=unnamed "OSX
+  let g:mkdp_browser = "safari" 
 else
   set clipboard=unnamedplus "Linux
+  let g:mkdp_path_to_chrome = "google-chrome"
 endif
 
 filetype on
@@ -37,12 +39,8 @@ set encoding=utf-8
 set fileencodings=utf-8,gb18030
 set hlsearch
 set backspace=eol,start,indent
-"set cursorline
 set linebreak
 syntax on 
-"set nu
-"set wildmenu
-
 
 set cursorcolumn
 set cursorline
@@ -287,7 +285,6 @@ map <Leader><leader>. <Plug>(easymotion-repeat)
 "markdown 
 noremap <Leader>md :MarkdownPreview<CR>
 noremap <Leader>ms :MarkdownPreviewStop<CR>
-let g:mkdp_path_to_chrome = "google-chrome"
 
 "expand region
 vmap K <Plug>(expand_region_expand)
